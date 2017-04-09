@@ -1,0 +1,44 @@
+<% if current_user %>
+    <br>
+    You have <%= pluralize(current_user.bookmarks.count, 'bookmark') %>
+    <br>
+   Your categories:
+    <br>
+    <ul>
+      <% current_user.categories.each do |category| %>
+        <li><%= category.title %></li>
+      <% end %>
+    </ul>
+    <br><br><br>
+    
+    <%= form_for @bookmark do |f| %>
+      <%= f.label :link %> <br>
+      <%= f.text_field :link %>
+      <%= f.submit 'Create bookmark' %>
+    <% end %>
+
+    <% @bookmarks.each do |bookmark| %>
+      <ul>
+          <li><%= link_to bookmark.title, bookmark_path(bookmark) %></li>
+      </ul>
+    <% end %>
+
+    <br><br><br>
+
+    <% if current_user.admin %>
+
+      Enter domain for example 'www.bbc.co' and body recep
+
+      <!--<%#= form_for @recept, recepts_create_path do |f| %>-->
+        <!--<%#= f.label :link_of_resurs %>-->
+        <!--<%#= f.text_field :link_of_resurs %>-->
+        <!--<%#= f.label :body %>-->
+        <!--<%#= f.text_field :body %>-->
+        <!--<%#= f.submit %>-->
+      <!--<%# end %>-->
+
+    <% end %>
+
+<% else %>
+    Please sign in
+<% end %>

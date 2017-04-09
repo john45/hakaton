@@ -1,0 +1,8 @@
+<h1>Yuor bookmark is:</h1>
+<ul>
+  <li><b>link:</b> <%= link_to 'Link to source', @bookmark.link %></li>
+  <li><b>image:</b> <%= image_tag @bookmark.image, size: '200x200' if !@bookmark.image.nil? %></li>
+  <li><b>title:</b> <%= @bookmark.title %></li>
+  <li><b>body:</b> <%= @bookmark.body %></li>
+</ul> <br><br><br>
+<%= link_to 'Go to root', root_path %>
